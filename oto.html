@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>WAIT! One Step Left — Swing Happens Piano</title>
+    <meta
+      name="description"
+      content="Upgrade your Swing Happens Piano Challenge with the limited bonus bundle: implementation call, 14 days community, and LEAKS Module 1."
+    />
+    <link rel="icon" href="assets/swing-happens-logo.webp" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,600;0,700;1,400;1,600&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --ink: #000;
+        --body: #4a4a4a;
+        --muted: #54595f;
+        --paper: #fff;
+        --timer: #eae4e4;
+        --cta: #2e3a8c;
+        --cta-hot: #3a48a8;
+        --line: #e8e2e2;
+        --gold-line: #c9b48a;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html,
+      body {
+        margin: 0;
+        background: var(--paper);
+        color: var(--body);
+        font-family: "Open Sans", sans-serif;
+      }
+
+      img {
+        max-width: 100%;
+        height: auto;
+        display: block;
+      }
+
+      .wrap {
+        width: min(820px, calc(100% - 32px));
+        margin: 0 auto;
+        padding: 28px 0 64px;
+        text-align: center;
+      }
+
+      .logo {
+        width: 168px;
+        height: 168px;
+        margin: 8px auto 18px;
+      }
+
+      h1,
+      h2,
+      h3 {
+        margin: 0;
+        color: var(--ink);
+        font-family: Verdana, Geneva, sans-serif;
+        font-weight: 600;
+        text-wrap: balance;
+      }
+
+      h1 {
+        font-size: clamp(1.55rem, 4vw, 2rem);
+        line-height: 1.35;
+      }
+
+      h2 {
+        font-size: clamp(1.45rem, 3.6vw, 2rem);
+        line-height: 1.35;
+      }
+
+      .countdown {
+        display: flex;
+        justify-content: center;
+        gap: 18px;
+        margin: 22px 0 18px;
+      }
+
+      .tick {
+        min-width: 118px;
+        padding: 10px 18px 12px;
+        background: var(--timer);
+        text-align: center;
+      }
+
+      .tick strong {
+        display: block;
+        color: #000;
+        font-family: Verdana, Geneva, sans-serif;
+        font-size: 33px;
+        font-weight: 400;
+        line-height: 1;
+      }
+
+      .tick span {
+        display: block;
+        margin-top: 6px;
+        color: var(--muted);
+        font-family: Verdana, Geneva, sans-serif;
+        font-size: 19px;
+      }
+
+      .warn {
+        max-width: 640px;
+        margin: 0 auto 22px;
+        color: #040404;
+        font-family: Verdana, Geneva, sans-serif;
+        font-size: 16px;
+        font-weight: 600;
+        line-height: 1.55;
+      }
+
+      .in {
+        margin: 8px 0 14px;
+        color: #111;
+        font-family: Verdana, Geneva, sans-serif;
+        font-size: clamp(1.7rem, 4vw, 2.4rem);
+        font-weight: 700;
+        text-decoration: underline;
+        text-decoration-color: #111;
+        text-underline-offset: 6px;
+      }
+
+      .lead {
+        max-width: 640px;
+        margin: 0 auto 28px;
+        font-size: 16px;
+        line-height: 1.6;
+      }
+
+      .bundle-kicker {
+        margin-bottom: 6px;
+      }
+
+      .bundle-name {
+        margin-bottom: 16px;
+        font-style: italic;
+      }
+
+      .ask {
+        margin: 0 auto 22px;
+        color: #111;
+        font-family: Verdana, Geneva, sans-serif;
+        font-size: 1.15rem;
+        font-weight: 600;
+        line-height: 1.45;
+      }
+
+      .cta {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 54px;
+        padding: 12px 28px;
+        border-radius: 22px;
+        background: var(--cta);
+        color: #fff;
+        font-size: clamp(1.05rem, 2.6vw, 1.55rem);
+        font-weight: 600;
+        text-decoration: none;
+      }
+
+      .cta:hover {
+        background: var(--cta-hot);
+      }
+
+      .micro {
+        margin: 10px 0 36px;
+        color: var(--muted);
+        font-size: 0.95rem;
+      }
+
+      .inside h2 {
+        margin-bottom: 6px;
+      }
+
+      .price {
+        margin: 0 0 28px;
+        color: #111;
+        font-family: Verdana, Geneva, sans-serif;
+        font-size: 1.15rem;
+        font-weight: 700;
+      }
+
+      .item {
+        max-width: 560px;
+        margin: 0 auto 28px;
+      }
+
+      .num {
+        margin-bottom: 6px;
+        color: #111;
+        font-family: Verdana, Geneva, sans-serif;
+        font-size: 1.7rem;
+        font-weight: 700;
+      }
+
+      .item h3 {
+        margin-bottom: 8px;
+        font-size: 1.2rem;
+      }
+
+      .item p {
+        margin: 0;
+        line-height: 1.55;
+      }
+
+      .quotes {
+        display: grid;
+        gap: 28px;
+        max-width: 620px;
+        margin: 42px auto;
+        text-align: left;
+      }
+
+      .quotes h2 {
+        text-align: center;
+        margin-bottom: 8px;
+      }
+
+      blockquote {
+        margin: 0;
+        padding: 0;
+        border: 0;
+      }
+
+      blockquote p {
+        margin: 0 0 10px;
+        color: #222;
+        font-size: 1.02rem;
+        font-style: italic;
+        line-height: 1.55;
+      }
+
+      figcaption {
+        color: var(--muted);
+        font-size: 0.92rem;
+      }
+
+      figcaption strong {
+        display: block;
+        color: #222;
+      }
+
+      .fit {
+        max-width: 640px;
+        margin: 36px auto;
+        text-align: left;
+      }
+
+      .fit h2 {
+        margin-bottom: 12px;
+        text-align: center;
+      }
+
+      .fit p {
+        margin: 0;
+        line-height: 1.6;
+      }
+
+      footer {
+        margin-top: 48px;
+        padding-top: 22px;
+        border-top: 1px solid var(--line);
+        color: #777;
+        font-size: 0.82rem;
+      }
+
+      footer a {
+        color: #555;
+      }
+
+      @media (max-width: 640px) {
+        .logo {
+          width: 128px;
+          height: 128px;
+        }
+
+        .countdown {
+          gap: 10px;
+        }
+
+        .tick {
+          min-width: 0;
+          flex: 1;
+          padding: 10px 8px;
+        }
+
+        .cta {
+          width: 100%;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="wrap">
+      <img
+        class="logo"
+        src="assets/swing-happens-logo.webp"
+        width="168"
+        height="168"
+        alt="Swing Happens"
+      />
+
+      <h1>WAIT! One Step Left — Don’t Miss This</h1>
+
+      <div class="countdown" aria-live="polite">
+        <div class="tick">
+          <strong id="minutes">20</strong>
+          <span>Minutes</span>
+        </div>
+        <div class="tick">
+          <strong id="seconds">00</strong>
+          <span>Seconds</span>
+        </div>
+      </div>
+
+      <p class="warn">
+        ⚠️ I’m looking for players, not collectors. This shortcut is only available
+        on this page because I want to reward the people who decide fast.
+        <br />Once closed — it's gone...
+      </p>
+
+      <p class="in">Great, you're in.</p>
+      <p class="lead">
+        Your Piano Challenge invitation will be in your inbox in about 10 minutes.
+        But <strong><em>if you are serious</em></strong> about results, “just showing up”
+        <strong><em>isn’t enough.</em></strong>
+      </p>
+
+      <h2 class="bundle-kicker">🧰 Upgrade your Challenge &amp; secure this limited</h2>
+      <h2 class="bundle-name">“Swing Happens Piano” Bonus Bundle.</h2>
+      <p class="ask">
+        Are you tired of just “understanding” music and ready to
+        <strong>finally get it done</strong> at the piano?
+      </p>
+
+      <a class="cta" id="cta-1" href="#">👉 YES! Secure My Bundle &amp; Call</a>
+      <p class="micro">Takes 30 seconds • Instant access</p>
+
+      <section class="inside">
+        <h2>What’s inside the Bundle:</h2>
+        <p class="price" id="price">(Regular Price: €299,00 – Today: €0):</p>
+
+        <article class="item">
+          <div class="num">1</div>
+          <h3>✅ Implementation Call with Frank</h3>
+          <p>
+            Focused session. Fix your Time Feel at the piano. Connect ears → hands.
+            No fluff.
+          </p>
+        </article>
+
+        <article class="item">
+          <div class="num">2</div>
+          <h3>✅ FREE 14 Days Community Access</h3>
+          <p>Play, apply, improve. No passive learning.</p>
+        </article>
+
+        <article class="item">
+          <div class="num">3</div>
+          <h3>✅ LEAKS METHOD Module 1 (Free)</h3>
+          <p>Clear structure. Real piano exercises. Built for playing — not just learning.</p>
+        </article>
+
+        <a class="cta" id="cta-2" href="#">👉 YES! Secure My Bundle &amp; Call</a>
+        <p class="micro">Takes 30 seconds • Instant access</p>
+      </section>
+
+      <section class="quotes">
+        <h2>🧰 What happens when you stop collecting and start doing</h2>
+        <figure>
+          <blockquote>
+            <p>
+              “I stopped hoarding PDFs and started playing. The 5-day challenge did
+              more for my swing than years of YouTube tutorials.”
+            </p>
+          </blockquote>
+          <figcaption><strong>Ronaldo G.</strong> Musician</figcaption>
+        </figure>
+        <figure>
+          <blockquote>
+            <p>
+              “Frank’s approach to Solfege changed everything. I'm not just moving
+              fingers anymore; I'm actually singing through the music.”
+            </p>
+          </blockquote>
+          <figcaption><strong>Fernando B.</strong> Musician</figcaption>
+        </figure>
+        <figure>
+          <blockquote>
+            <p>
+              “Finally, someone stopped giving me ‘more’ and showed me how to do
+              ‘less’ perfectly. My time feel has never been this solid.”
+            </p>
+          </blockquote>
+          <figcaption><strong>Sybille F.</strong> Cello / Flute</figcaption>
+        </figure>
+      </section>
+
+      <section class="fit">
+        <h2>Who is this for?</h2>
+        <p>
+          ✅ This is for the pianist who knows the theory but feels their playing is
+          “stiff” or inconsistent. If your timing doesn’t lock in — right notes, but
+          the groove never sits — this is the missing piece.
+        </p>
+      </section>
+
+      <section class="fit">
+        <h2>Why take the call?</h2>
+        <p>
+          ✅ Most pianists try to fix their timing alone by watching more videos.
+          Real progress happens when someone hears what you can’t hear yet. We
+          connect what you hear to what you play. No pressure. Just clarity.
+        </p>
+      </section>
+
+      <a class="cta" id="cta-3" href="#">👉 YES! Secure My Bundle &amp; Call</a>
+      <p class="micro">Takes 30 seconds • Instant access</p>
+
+      <footer>
+        <a href="privacy.html">Datenschutzerklärung</a>
+        · Copyright 2026 © all rights reserved by Frank Herzberg
+      </footer>
+    </main>
+
+    <script src="js/config.js"></script>
+    <script>
+      const cfg = window.SWING_PIANO || {};
+      const booking = cfg.bookingUrl || "#";
+      const expireUrl = cfg.expireUrl || "bundle-over.html";
+      const total = Number(cfg.countdownSeconds || 1200);
+      const key = "swing-piano-oto-deadline";
+
+      document.getElementById("price").textContent =
+        "(Regular Price: " + (cfg.offerWas || "€299,00") + " – Today: " + (cfg.offerNow || "€0") + "):";
+
+      ["cta-1", "cta-2", "cta-3"].forEach((id) => {
+        const el = document.getElementById(id);
+        if (el) el.href = booking;
+      });
+
+      function deadline() {
+        const stored = Number(sessionStorage.getItem(key) || 0);
+        if (stored && stored > Date.now()) return stored;
+        const next = Date.now() + total * 1000;
+        sessionStorage.setItem(key, String(next));
+        return next;
+      }
+
+      const end = deadline();
+      const minutesEl = document.getElementById("minutes");
+      const secondsEl = document.getElementById("seconds");
+
+      function tick() {
+        const left = Math.max(0, Math.floor((end - Date.now()) / 1000));
+        minutesEl.textContent = String(Math.floor(left / 60)).padStart(2, "0");
+        secondsEl.textContent = String(left % 60).padStart(2, "0");
+        if (left <= 0) {
+          window.location.replace(expireUrl);
+        }
+      }
+
+      tick();
+      setInterval(tick, 250);
+    </script>
+  </body>
+</html>
