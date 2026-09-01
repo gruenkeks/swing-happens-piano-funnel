@@ -112,14 +112,14 @@
 
       .hero {
         display: grid;
-        grid-template-columns: minmax(360px, 62vw) 1fr;
+        grid-template-columns: minmax(280px, 48vw) 1fr;
         min-height: 100vh;
       }
 
       .hero-photo {
         position: relative;
         overflow: hidden;
-        background: #fff;
+        background: #0a1018;
       }
 
       .hero-photo img {
@@ -127,15 +127,15 @@
         inset: 0;
         width: 100%;
         height: 100%;
-        object-fit: contain;
-        object-position: center;
+        object-fit: cover;
+        object-position: 42% 28%;
       }
 
       .hero-photo::after {
         content: "";
         position: absolute;
         inset: 0;
-        background: linear-gradient(90deg, transparent 62%, var(--navy) 100%);
+        background: linear-gradient(90deg, transparent 58%, var(--navy) 100%);
       }
 
       .hero-copy {
@@ -454,13 +454,13 @@
           top: 0;
           right: 0;
           left: 0;
-          height: 46%;
-          background: #fff;
+          height: 58%;
+          background: #0a1018;
         }
 
         .hero-photo img {
-          object-fit: contain;
-          object-position: center;
+          object-fit: cover;
+          object-position: 38% 18%;
         }
 
         .hero-photo::after {
@@ -701,7 +701,7 @@
         return `
           <div class="screen hero">
             <div class="hero-photo">
-              <img src="assets/hero-piano.jpg?v=9" alt="Pianist at a grand piano" />
+              <img src="assets/hero-piano.jpg?v=10" alt="Pianist at a grand piano" />
             </div>
             <div class="hero-copy">
               <p class="ribbon">5-day Timefeel Challenge for piano players</p>
