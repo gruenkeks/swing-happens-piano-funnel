@@ -104,12 +104,17 @@
         background: #000;
       }
       .video iframe,
+      .video video,
       .pdf iframe {
         position: absolute;
         inset: 0;
         width: 100%;
         height: 100%;
         border: 0;
+      }
+      .video video {
+        object-fit: contain;
+        background: #000;
       }
       .pdf {
         position: relative;
@@ -209,17 +214,18 @@
       </p>
 
       <div class="video">
-        <iframe
-          src="https://drive.google.com/file/d/1snLBfa_4MjSFf4CGEsyhKvnZhjMcBrdm/preview?usp=sharing"
-          allow="autoplay; encrypted-media; fullscreen"
-          allowfullscreen
-          referrerpolicy="no-referrer-when-downgrade"
+        <video
+          controls
+          playsinline
+          preload="metadata"
           title="LEAKS Piano workshop"
-        ></iframe>
+        >
+          <source src="https://leaks-booking.wachstumsakademie-maximus.de/media/leaks-workshop.mp4" type="video/mp4" />
+        </video>
       </div>
       <div class="cta-row">
-        <a class="cta ghost" href="https://drive.google.com/file/d/1snLBfa_4MjSFf4CGEsyhKvnZhjMcBrdm/view?usp=sharing" target="_blank" rel="noopener">
-          Open video if it does not load
+        <a class="cta ghost" href="https://leaks-booking.wachstumsakademie-maximus.de/media/leaks-workshop.mp4" target="_blank" rel="noopener">
+          Open video in a new tab
         </a>
       </div>
 
