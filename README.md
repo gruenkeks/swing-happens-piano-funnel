@@ -10,9 +10,10 @@ Real leads go through the live-test repo instead: `swing-happens-piano-live`.
 
 | File | Role |
 |---|---|
-| `index.html` | 11-step Piano qualification form |
+| `index.html` | 11-step Piano qualification form (Piano +5 / Keyboard +3 / Other 0, max 33, VIP `>= 25`) |
 | `oto.html` | Bonus-bundle OTO (after form complete) |
-| `workshop.html` | Post-booking screen (workshop video + PDF) |
+| `booking.html` | Mock of the 3 EA questions, then workshop |
+| `workshop.html` | Post-booking screen (workshop video + PDF view) |
 | `bundle-over.html` | Countdown expired |
 | `privacy.html` | Short privacy note |
 
@@ -24,6 +25,7 @@ python3 -m http.server 4173
 
 - Form: http://localhost:4173/
 - OTO: http://localhost:4173/oto.html
+- Booking questions: http://localhost:4173/booking.html
 - Workshop: http://localhost:4173/workshop.html
 
 UTM test: `http://localhost:4173/?campaign_name=test&adset_name=a&ad_name=b&traffic_source=meta`
@@ -31,9 +33,9 @@ UTM test: `http://localhost:4173/?campaign_name=test&adset_name=a&ad_name=b&traf
 ## Flow
 
 ```
-Ad → index.html (form) → oto.html (bundle) → workshop.html
+Ad → index.html (form) → oto.html (bundle) → booking.html (3 questions) → workshop.html
 ```
 
-OTO “Secure my bundle & call” skips Easy!Appointments and opens the after-booking workshop page.
+OTO “Secure my bundle & call” skips Easy!Appointments. Same three questions as live EA, then workshop.
 
 `webhookUrl` stays empty. Form data stays in `sessionStorage` only.

@@ -615,8 +615,8 @@
           question: "What's your main instrument?",
           key: "setup",
           options: [
-            ["piano", "Piano", 0],
-            ["keyboard", "Keyboard", 0],
+            ["piano", "Piano", 5],
+            ["keyboard", "Keyboard", 3],
             ["other", "Other", 0],
           ],
         },
@@ -669,7 +669,7 @@
       }
 
       function routing() {
-        return score() >= 24 ? "vip" : "standard";
+        return score() >= 25 ? "vip" : "standard";
       }
 
       function qIndex() {

@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Book your call — Swing Happens Piano</title>
+    <link rel="icon" href="assets/logo.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;1,9..144,500&family=Outfit:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --navy: #0b1728;
+        --cream: #f3ead8;
+        --cream-soft: rgba(243, 234, 216, 0.68);
+        --gold: #d4a017;
+        --burgundy: #7a2d45;
+        --ink: #0b1728;
+        --line: rgba(243, 234, 216, 0.16);
+      }
+      * { box-sizing: border-box; }
+      html, body {
+        margin: 0;
+        background: var(--navy);
+        color: var(--cream);
+        font-family: Outfit, sans-serif;
+      }
+      .wrap {
+        width: min(560px, calc(100% - 40px));
+        margin: 0 auto;
+        padding: 40px 0 100px;
+      }
+      .logo {
+        width: 64px;
+        height: 64px;
+        border-radius: 50%;
+        display: block;
+        margin: 0 0 22px;
+      }
+      .ribbon {
+        display: inline-flex;
+        margin: 0 0 14px;
+        padding: 8px 14px;
+        background: var(--burgundy);
+        color: #fff;
+        font-size: 0.68rem;
+        font-weight: 700;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+      }
+      h1 {
+        margin: 0 0 12px;
+        font-family: Fraunces, Georgia, serif;
+        font-weight: 500;
+        font-size: clamp(2rem, 5vw, 2.8rem);
+        letter-spacing: -0.03em;
+      }
+      h1 em { color: var(--gold); font-style: italic; }
+      .lede {
+        color: var(--cream-soft);
+        line-height: 1.6;
+        margin: 0 0 28px;
+      }
+      label {
+        display: block;
+        margin: 0 0 16px;
+        font-size: 0.88rem;
+        font-weight: 600;
+      }
+      select, textarea {
+        display: block;
+        width: 100%;
+        margin-top: 8px;
+        padding: 12px 14px;
+        border: 1px solid var(--line);
+        background: rgba(243, 234, 216, 0.06);
+        color: var(--cream);
+        font: inherit;
+      }
+      textarea { min-height: 96px; resize: vertical; }
+      .cta {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 48px;
+        margin-top: 10px;
+        padding: 12px 28px;
+        border: 0;
+        border-radius: 999px;
+        background: var(--gold);
+        color: var(--ink);
+        font-size: 0.82rem;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        cursor: pointer;
+      }
+      .error { color: #f3b4b4; min-height: 1.4em; }
+      .note {
+        margin-top: 18px;
+        color: var(--cream-soft);
+        font-size: 0.85rem;
+      }
+    </style>
+  </head>
+  <body>
+    <main class="wrap">
+      <img class="logo" src="assets/logo.png" alt="Swing Happens" />
+      <p class="ribbon">Mock booking</p>
+      <h1>Confirm a few details. <em>Then the workshop.</em></h1>
+      <p class="lede">
+        This test funnel skips the real calendar. Answer the same three questions as the live booking page, then continue.
+      </p>
+      <form id="booking">
+        <label>
+          Confirm your instrument
+          <select id="instrument" required>
+            <option value="">Please select</option>
+            <option value="Piano">Piano</option>
+            <option value="Keyboard">Keyboard</option>
+            <option value="Other">Other</option>
+          </select>
+        </label>
+        <label>
+          Improvisation level
+          <select id="improv" required>
+            <option value="">Please select</option>
+            <option value="Beginner">Beginner</option>
+            <option value="Intermediate">Intermediate</option>
+            <option value="Advanced">Advanced</option>
+          </select>
+        </label>
+        <label>
+          Biggest current challenge
+          <textarea id="challenge" maxlength="120" required placeholder="What is holding your playing back right now?"></textarea>
+        </label>
+        <p class="error" id="error"></p>
+        <button class="cta" type="submit">Continue to workshop</button>
+      </form>
+      <p class="note">No appointment is created. Live funnel books on Easy!Appointments.</p>
+    </main>
+    <script>
+      const form = document.getElementById("booking");
+      try {
+        const lead = JSON.parse(sessionStorage.getItem("swing-piano-lead") || "{}");
+        const instrument = lead.answers?.setup?.value;
+        const map = { piano: "Piano", keyboard: "Keyboard", other: "Other" };
+        if (map[instrument]) document.getElementById("instrument").value = map[instrument];
+      } catch (err) {}
+      form.addEventListener("submit", (event) => {
+        event.preventDefault();
+        const instrument = document.getElementById("instrument").value;
+        const improv = document.getElementById("improv").value;
+        const challenge = document.getElementById("challenge").value.trim();
+        if (!instrument || !improv || !challenge) {
+          document.getElementById("error").textContent = "Please answer all three questions.";
+          return;
+        }
+        sessionStorage.setItem(
+          "swing-piano-booking",
+          JSON.stringify({ instrument, improv, challenge, mock: true, at: new Date().toISOString() })
+        );
+        window.location.href = "workshop.html";
+      });
+    </script>
+  </body>
+</html>
