@@ -1,11 +1,10 @@
-# Swing Happens Piano Funnel
+# Swing Happens Piano Funnel (mock)
 
-Static funnel for the **Swing Happens Piano Challenge**: qualification form + one-time-offer page, adapted from Frank Herzberg’s bass funnel.
+Click-through of the **Swing Happens Piano Challenge**. No real Brevo, no real calendar booking.
 
-Live bass references:
+Live: https://swing-happens-piano-funnel.vercel.app
 
-- Form: https://forms.fillout.com/t/3wwAWmLZKkus
-- OTO: https://frankherzberg.com/filloutwait/
+Real leads go through the live-test repo instead: `swing-happens-piano-live`.
 
 ## Pages
 
@@ -13,39 +12,28 @@ Live bass references:
 |---|---|
 | `index.html` | 11-step Piano qualification form |
 | `oto.html` | Bonus-bundle OTO (after form complete) |
+| `workshop.html` | Post-booking screen (workshop video + PDF) |
 | `bundle-over.html` | Countdown expired |
 | `privacy.html` | Short privacy note |
 
 ## Local preview
 
-Open `index.html` in a browser, or from this folder:
-
 ```bash
 python3 -m http.server 4173
 ```
 
-Then:
-
 - Form: http://localhost:4173/
 - OTO: http://localhost:4173/oto.html
+- Workshop: http://localhost:4173/workshop.html
 
 UTM test: `http://localhost:4173/?campaign_name=test&adset_name=a&ad_name=b&traffic_source=meta`
 
 ## Flow
 
 ```
-Ad → index.html (form) → oto.html (bundle + call) → Brevo calendar
+Ad → index.html (form) → oto.html (bundle) → workshop.html
 ```
 
-Score `>= 24` is treated as VIP. Score `24` is included (the live bass Fillout currently drops exact-24).
+OTO “Secure my bundle & call” skips Easy!Appointments and opens the after-booking workshop page.
 
-The form stores the lead in `sessionStorage` and can POST to `webhookUrl` in `js/config.js` once n8n/Brevo is wired. No data is sent until that URL is set.
-
-## Still to confirm
-
-- Piano coach calendar (currently Frank’s Swing Happens Brevo meeting)
-- Meta Pixel ID / CAPI in `js/config.js`
-- Piano-specific Brevo lists
-- Whether LEAKS / Module 1 stay the Piano bonuses
-
-Booking, pixel, and webhook are switched in `js/config.js` only.
+`webhookUrl` stays empty. Form data stays in `sessionStorage` only.
