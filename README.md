@@ -28,6 +28,8 @@ python3 -m http.server 4173
 - Booking questions: http://localhost:4173/booking.html
 - Workshop: http://localhost:4173/workshop.html
 
+Workshop video hides after **5 days** in this browser (`localStorage`). PDF stays. Force expired: `http://localhost:4173/workshop.html?expireNow=1`
+
 UTM test: `http://localhost:4173/?campaign_name=test&adset_name=a&ad_name=b&traffic_source=meta`
 
 ## Flow

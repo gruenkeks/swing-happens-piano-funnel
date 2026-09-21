@@ -130,6 +130,17 @@
         object-fit: contain;
         background: #000;
       }
+      .video.expired {
+        display: grid;
+        place-items: center;
+        padding: 28px 20px;
+      }
+      .video.expired .expired-msg {
+        position: static;
+        margin: 0;
+        color: var(--cream);
+        text-align: center;
+      }
       .pdf {
         position: relative;
         width: 100%;
@@ -144,6 +155,7 @@
         gap: 12px;
         margin: 12px 0 8px;
       }
+      .cta-row[hidden] { display: none !important; }
       .cta {
         display: inline-flex;
         align-items: center;
@@ -227,18 +239,9 @@
         5 days available. Watch the workshop now and find a way out of information overload.
       </p>
 
-      <div class="video">
-        <video
-          controls
-          playsinline
-          preload="metadata"
-          title="LEAKS Piano workshop"
-        >
-          <source src="https://leaks-booking.wachstumsakademie-maximus.de/media/leaks-workshop.mp4" type="video/mp4" />
-        </video>
-      </div>
-      <div class="cta-row">
-        <a class="cta ghost" href="https://leaks-booking.wachstumsakademie-maximus.de/media/leaks-workshop.mp4" target="_blank" rel="noopener">
+      <div class="video" id="workshop-video"></div>
+      <div class="cta-row" id="workshop-video-cta" hidden>
+        <a class="cta ghost" href="#" target="_blank" rel="noopener">
           Open video in a new tab
         </a>
       </div>
@@ -251,7 +254,7 @@
         <a class="cta" href="assets/5-fatal-mistakes.pdf" target="_blank" rel="noopener">View PDF</a>
         <a class="cta ghost" href="assets/5-fatal-mistakes.pdf" download="5-fatal-mistakes.pdf">Download PDF</a>
       </div>
-      <p class="micro">PDF stays with you. Workshop video is available for 5 days.</p>
+      <p class="micro" id="workshop-micro">PDF stays with you. Workshop video is available for 5 days.</p>
 
       <h2>Do you recognize yourself here?</h2>
       <div class="sit">
@@ -320,5 +323,7 @@
         · Copyright 2026 · Frank Herzberg
       </footer>
     </main>
+    <script src="js/config.js"></script>
+    <script src="js/workshop-access.js"></script>
   </body>
 </html>

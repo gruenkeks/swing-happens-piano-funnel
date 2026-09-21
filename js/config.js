@@ -8,4 +8,8 @@ window.SWING_PIANO = {
   offerNow: "€0",
   webhookUrl: "",
   metaPixelId: "",
+  workshopVideoUrl:
+    "https://leaks-booking.wachstumsakademie-maximus.de/media/leaks-workshop.mp4",
+  workshopAvailableDays: 5,
+  workshopStorageKey: "swing-piano-workshop-deadline",
 };
